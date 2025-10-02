@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood Checker</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="assets/icon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>What is your mood today?</h1>
+    </header>
+
+    <main>
+      <div id="box">
+        <img src="assets/calm.svg" alt="" />
+        <p id="mood" role="status" aria-live="polite">calm</p>
+        <div id="button-group">
+          <button id="stop-btn" type="button">Stop</button>
+          <button id="restart-btn" type="button">Restart</button>
+        </div>
+      </div>
+      <p id="mood-text" role="status" aria-live="polite">
+        And this is a placeholder for mood specific text that will show up once
+        a mood has been choosen.
+      </p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

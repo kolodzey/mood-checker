@@ -1,0 +1,111 @@
+:root {
+  --dark-purple: #211244;
+  --white: #fff;
+  --gradient-green: #d6fffa;
+  --gradient-purple: #d9cff2;
+  --light-purple: #512da8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: linear-gradient(
+    to bottom,
+    var(--gradient-green),
+    var(--gradient-purple)
+  );
+  background-attachment: fixed;
+  font-family: "Quicksand", system-ui, sans-serif;
+  color: var(--dark-purple);
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--white);
+  background-color: var(--dark-purple);
+  padding: 3rem 1rem 6.5rem;
+  text-align: center;
+}
+
+main {
+  padding: 0 1rem;
+}
+
+p {
+  color: var(--dark-purple);
+  font-size: 1.5rem;
+  max-width: 40rem;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 2.5rem;
+}
+
+p#mood {
+  padding-top: 1rem;
+}
+
+img {
+  margin: 0 auto;
+  display: block;
+}
+
+#box {
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  max-width: 40rem;
+  max-height: 30rem;
+  padding: 3rem 2rem 2.5rem;
+  margin: -3rem auto 0;
+  box-shadow: 0 8px 20px rgba(33, 18, 68, 0.15);
+}
+
+#button-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-top: 3.5rem;
+}
+
+button {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.125rem;
+  border-radius: 6rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--dark-purple);
+}
+
+#stop-btn {
+  background-color: var(--dark-purple);
+  color: var(--white);
+}
+
+#restart-btn {
+  background-color: var(--white);
+  color: var(--dark-purple);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button#stop-btn:hover {
+  background-color: var(--light-purple);
+}
+
+button#restart-btn:hover {
+  filter: brightness(0.95);
+}
+
+button:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--dark-purple) 60%, white);
+  outline-offset: 2px;
+}
