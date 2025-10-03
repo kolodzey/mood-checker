@@ -53,9 +53,11 @@ p#mood {
   padding-top: 1rem;
 }
 
-img {
-  margin: 0 auto;
+#box svg {
   display: block;
+  margin: 0 auto;
+  width: min(60vmin, 240px);
+  height: auto;
 }
 
 #box {
