@@ -1,4 +1,4 @@
-# 😄 Mood Switcher
+# 😄 Mood Checker
 
 > 🚧 **Work in Progress:** This project is currently under development.
 

@@ -26,6 +26,16 @@
           fill="none"
           viewBox="0 0 240 240"
         >
+          <!-- Emoji Background Circle - doesn't move at all -->
+          <circle
+            cx="120"
+            cy="120"
+            r="114.5"
+            stroke="#6b42cc"
+            stroke-width="11"
+          />
+
+          <!-- Mouth -->
           <path
             id="mouth"
             stroke="#211244"
@@ -33,6 +43,8 @@
             stroke-width="12"
             d="M180 102.5c-16.5 53-80 52-122-6"
           />
+
+          <!-- Eyes closed -->
           <path
             id="leftEye"
             stroke="#211244"
@@ -47,12 +59,96 @@
             stroke-width="12"
             d="M184.5 59c-16 16.5-36 19.5-47 4"
           />
+
+          <!-- Eye Brows for sad, angry and worried Emoji -->
+          <path
+            id="leftBrow"
+            d=""
+            fill="none"
+            stroke="#211244"
+            stroke-width="10"
+            stroke-linecap="round"
+            opacity="0"
+          />
+          <path
+            id="rightBrow"
+            d=""
+            fill="none"
+            stroke="#211244"
+            stroke-width="10"
+            stroke-linecap="round"
+            opacity="0"
+          />
+
+          <!-- Star Eyes for Excitement ⭐️ -->
+
+          <path id="leftEyeStar" d="" fill="#211244" opacity="0" />
+          <path id="rightEyeStar" d="" fill="#211244" opacity="0" />
+
+          <!-- Happy Emoji needs some cheeks -->
           <circle
-            cx="120"
-            cy="120"
-            r="114.5"
-            stroke="#6b42cc"
-            stroke-width="11"
+            id="leftCheek"
+            cx="0"
+            cy="0"
+            r="0"
+            fill="#211244"
+            opacity="0"
+          />
+          <circle
+            id="rightCheek"
+            cx="0"
+            cy="0"
+            r="0"
+            fill="#211244"
+            opacity="0"
+          />
+
+          <!-- Sleepy Emoji atrributes -->
+          <path
+            id="mouthOpen"
+            d=""
+            fill="none"
+            stroke="#211244"
+            stroke-width="12"
+            opacity="0"
+          />
+          <path
+            id="zSmall"
+            d=""
+            fill="none"
+            stroke="#211244"
+            stroke-width="8"
+            stroke-linecap="round"
+            opacity="0"
+          />
+          <path
+            id="zBig"
+            d=""
+            fill="none"
+            stroke="#211244"
+            stroke-width="8"
+            stroke-linecap="round"
+            opacity="0"
+          />
+
+          <!-- Eyes open -->
+          <ellipse
+            id="leftEyeOpen"
+            cx="0"
+            cy="0"
+            rx="0"
+            ry="0"
+            opacity="0"
+            fill="#211244"
+          />
+          <ellipse
+            id="rightEyeOpen"
+            cx="0"
+            cy="0"
+            rx="0"
+            ry="0"
+            opacity="0"
+            fill="#211244"
           />
         </svg>
         <p id="mood" role="status" aria-live="polite">calm</p>
@@ -67,6 +163,11 @@
       </p>
     </main>
 
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/MorphSVGPlugin.min.js"></script>
+    <script>
+      gsap.registerPlugin(MorphSVGPlugin);
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

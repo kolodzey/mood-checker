@@ -111,3 +111,9 @@ button:focus-visible {
   outline: 3px solid color-mix(in oklab, var(--dark-purple) 60%, white);
   outline-offset: 2px;
 }
+
+svg path,
+svg circle,
+svg ellipse {
+  transition: none;
+}
