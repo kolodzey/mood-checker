@@ -153,14 +153,37 @@
         </svg>
         <p id="mood" role="status" aria-live="polite">calm</p>
         <div id="button-group">
-          <button id="stop-btn" type="button">Stop</button>
-          <button id="restart-btn" type="button">Restart</button>
+          <button id="stop-btn" type="button">That's my mood!</button>
+          <!-- <button id="restart-btn" type="button">Restart</button> -->
+        </div>
+
+        <!-- Modal -->
+        <div
+          id="mood-modal"
+          class="modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          aria-describedby="modal-text"
+          hidden
+        >
+          <div class="modal__backdrop" data-close></div>
+          <div class="modal__panel" role="document">
+            <button
+              class="modal__close"
+              type="button"
+              aria-label="Close"
+              data-close
+            >
+              ×
+            </button>
+            <h2 id="modal-title" class="modal__title"></h2>
+            <div class="modal__emoji" id="modal-emoji-wrap"></div>
+            <p id="modal-text" class="modal__text"></p>
+          </div>
         </div>
       </div>
-      <p id="mood-text" role="status" aria-live="polite">
-        And this is a placeholder for mood specific text that will show up once
-        a mood has been choosen.
-      </p>
+      <p id="mood-text" role="status" aria-live="polite"></p>
     </main>
 
     <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>

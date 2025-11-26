@@ -78,10 +78,10 @@ p#mood {
 }
 
 button {
-  font-family: "Quicksand", sans-serif;
-  font-size: 1.125rem;
+  font-family: inherit;
+  font-size: 1.25rem;
   border-radius: 6rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   border: 1px solid var(--dark-purple);
 }
 
@@ -116,4 +116,64 @@ svg path,
 svg circle,
 svg ellipse {
   transition: none;
+}
+
+/* hide the old below-SVG message area */
+#mood-text {
+  display: none;
+}
+
+.modal[hidden] {
+  display: none;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+}
+.modal__panel {
+  position: relative;
+  max-width: 520px;
+  margin: 6vh auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem 1.25rem 1.25rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: scale(0.96);
+}
+.modal__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal__title {
+  margin: 0.25rem 2rem 0.5rem 0;
+  font-size: 1.125rem;
+}
+.modal__emoji {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.25rem 0 0.75rem;
+}
+.modal__emoji svg {
+  width: 240px;
+  height: 240px;
+}
+.modal__text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
 }
