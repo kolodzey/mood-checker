@@ -1,8 +1,11 @@
 # Mood Checker
 
-A playful one-page mood picker built with HTML, CSS, SVG, and GSAP.
+A playful one-page mood picker built with HTML, CSS, SVG, and GSAP, just for fun.
 
-The app starts with a looping animated face. When the user clicks **"That's my mood!"**, the animation pauses, the current mood is shown, and the button changes to **"One more time ..."** so the user can restart the loop.
+
+<img width="2143" height="316" alt="emojis" src="https://github.com/user-attachments/assets/8ab60437-8b71-4998-8fd4-2175eaec8eaa" />
+
+Emojis are taken from my Figma Plugin Emoji Express: https://github.com/kolodzey/figma-smiley-express.
 
 ## Features
 
