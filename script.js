@@ -174,13 +174,15 @@ function setInitial(mood) {
 function morphTo(mood, dur = 0.9) {
   const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
   tl.addLabel("start", 0);
+  const labelAt = Math.max(0, dur - 1);
+
   tl.call(
     () => {
       $("#mood").textContent = mood.id;
       window.currentMood = mood;
     },
     null,
-    `start+=${(dur * 0.7).toFixed(2)}`,
+    `start+=${labelAt.toFixed(2)}`,
   );
 
   // ---- Eyes (closed paths) ----
@@ -307,7 +309,7 @@ function morphTo(mood, dur = 0.9) {
       $("#mood").textContent = mood.id;
     },
     null,
-    `start+=${(dur * 0.7).toFixed(2)}`,
+    `start+=${labelAt.toFixed(2)}`,
   );
 
   return tl;
@@ -340,9 +342,17 @@ tl.add(morphTo(calm, 1.5))
   .to({}, { duration: 1.0 });
 
 // buttons
-byId("stop-btn")?.addEventListener("click", () => tl.pause());
+const moodButton = document.getElementById("stop-btn");
+let isPausedByUser = false;
 
-// reduce motion
-if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  tl.pause();
-}
+moodButton?.addEventListener("click", () => {
+  if (isPausedByUser) {
+    tl.restart();
+    moodButton.textContent = "That's my mood!";
+  } else {
+    tl.pause();
+    moodButton.textContent = "One more time ...";
+  }
+
+  isPausedByUser = !isPausedByUser;
+});
