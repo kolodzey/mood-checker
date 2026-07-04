@@ -2,7 +2,6 @@
 const MOODS = [
   {
     id: "calm",
-    text: "Breathe in, breathe out - you’re floating in your own little zen bubble. The world can wait a minute. 🧘‍♀️",
     d: {
       mouth: "M180 102.5c-16.5 53-80 52-122-6",
       leftEye: "M108.5 67c-16 15-37 11-47.5-4.5",
@@ -12,7 +11,6 @@ const MOODS = [
 
   {
     id: "happy",
-    text: "Happy as Cookie Monster in a cookie factory! Keep sprinkling that joy around - it’s contagious. 🍪✨",
     d: {
       mouth: "M188 107c-39.5 63.5-91 64-121.5-6.5",
       leftEye: "M116 75c-12.5-21-30.5-17.5-41.5-6",
@@ -26,7 +24,6 @@ const MOODS = [
 
   {
     id: "excited",
-    text: "Life’s the rollercoaster - throw your hands up and scream for fun! Adventure is calling, and you already said yes. 🎢💥",
     d: {
       mouth: "M164.5 120c-30 42-102 43.5-116.5-22.5",
       leftEyeStar:
@@ -38,7 +35,6 @@ const MOODS = [
 
   {
     id: "sleepy",
-    text: "Yawn, stretch, repeat... The bed just texted - it misses you. 💤 Rest is not lazy. It’s recharging your superpowers. ⚡",
     d: {
       mouthOpen:
         "M114.941 123.021c10.434-2.865 23.449 4.856 27.625 20.067s-3.072 28.496-13.507 31.361c-10.434 2.864-23.45-4.857-27.625-20.069s3.072-28.495 13.507-31.359Z",
@@ -52,7 +48,6 @@ const MOODS = [
 
   {
     id: "sad",
-    text: "It’s okay to have rainy days - even the sun takes a break. ☔ Let the clouds pass, and your smile will find the sky again. 🌤️",
     d: {
       mouth: "M179 136c-34.5-33-80.5-29-96.5 3",
       leftEye: "M98 81c-9.5 14-26 13-35 5.5",
@@ -64,7 +59,6 @@ const MOODS = [
 
   {
     id: "angry",
-    text: "Donald Duck gets it - sometimes quacking is therapy. 🦆 Let it out, breathe deep, and you’ll laugh about it later. 💨",
     d: {
       mouth: "M179.5 130C155 78 88 93 63.5 157",
       leftBrow: "M107 54c-14-5-24.5-5.5-37.5-5",
@@ -90,7 +84,6 @@ const MOODS = [
 
   {
     id: "worried",
-    text: "Minds love to play “what if.” Hearts prefer “what is.” 💭💛 You’ve got this — one tiny step at a time.",
     d: {
       mouth: "M197 114.5c-30-13.5-76-5-114.5 30",
       leftBrow: "M74.095 63.987c12.906-7.38 20.116-15.028 28.194-25.226",
@@ -162,7 +155,7 @@ function morphPath(tl, target, d, at = 0, dur = 0.9) {
     tl.to(
       target,
       { autoAlpha: 1, duration: Math.min(0.35, dur * 0.5), ease: "power2.out" },
-      offset(at, 0.05) // <-- safe label/number offset
+      offset(at, 0.05), // <-- safe label/number offset
     );
   }
   return tl;
@@ -184,11 +177,10 @@ function morphTo(mood, dur = 0.9) {
   tl.call(
     () => {
       $("#mood").textContent = mood.id;
-      $("#mood-text").textContent = mood.text;
       window.currentMood = mood;
     },
     null,
-    `start+=${(dur * 0.7).toFixed(2)}`
+    `start+=${(dur * 0.7).toFixed(2)}`,
   );
 
   // ---- Eyes (closed paths) ----
@@ -204,7 +196,7 @@ function morphTo(mood, dur = 0.9) {
       "#mouthOpen",
       { autoAlpha: 0 },
       { autoAlpha: 1, duration: 0.3, ease: "power2.out" },
-      "start+=0.15"
+      "start+=0.15",
     );
   } else if (mood.d.mouth) {
     morphPath(tl, "#mouth", mood.d.mouth, "start", dur);
@@ -222,7 +214,7 @@ function morphTo(mood, dur = 0.9) {
       ["#leftCheek", "#rightCheek"],
       { autoAlpha: 0, scale: 0.96, transformOrigin: "50% 50%" },
       { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power2.out" },
-      `start+=${(dur * 0.6).toFixed(2)}`
+      `start+=${(dur * 0.6).toFixed(2)}`,
     );
   } else {
     hide(tl, ["#leftCheek", "#rightCheek"], "start");
@@ -237,17 +229,17 @@ function morphTo(mood, dur = 0.9) {
       ["#leftEyeStar", "#rightEyeStar"],
       { autoAlpha: 0, rotate: 0, transformOrigin: "50% 50%" },
       { autoAlpha: 1, duration: 0.35, ease: "power2.out" },
-      "start+=0.2"
+      "start+=0.2",
     )
       .to(
         ["#leftEyeStar", "#rightEyeStar"],
         { rotate: 8, duration: 0.12, ease: "power1.out" },
-        ">0.8"
+        ">0.8",
       )
       .to(
         ["#leftEyeStar", "#rightEyeStar"],
         { rotate: 0, duration: 0.16, ease: "power1.in" },
-        ">"
+        ">",
       );
   } else {
     hide(tl, ["#leftEyeStar", "#rightEyeStar"], "start");
@@ -264,12 +256,12 @@ function morphTo(mood, dur = 0.9) {
       "#zSmall",
       { autoAlpha: 0, y: 0 },
       { autoAlpha: 1, y: -6, duration: 0.45, ease: "power1.out" },
-      `start+=${(dur * 0.55).toFixed(2)}`
+      `start+=${(dur * 0.55).toFixed(2)}`,
     ).fromTo(
       "#zBig",
       { autoAlpha: 0, y: 0 },
       { autoAlpha: 1, y: -10, duration: 0.55, ease: "power1.out" },
-      ">-0.30"
+      ">-0.30",
     );
   } else {
     hide(tl, ["#zSmall", "#zBig"], "start", 0.3);
@@ -283,12 +275,12 @@ function morphTo(mood, dur = 0.9) {
       "#leftBrow",
       { autoAlpha: 0, y: 0 },
       { autoAlpha: 1, y: -6, duration: 0.45, ease: "power1.out" },
-      `start+=${(dur * 0.5).toFixed(2)}`
+      `start+=${(dur * 0.5).toFixed(2)}`,
     ).fromTo(
       "#rightBrow",
       { autoAlpha: 0, y: 0 },
       { autoAlpha: 1, y: -10, duration: 0.55, ease: "power1.out" },
-      ">-0.30"
+      ">-0.30",
     );
   } else {
     hide(tl, ["#leftBrow", "#rightBrow"], "start", 0.35);
@@ -300,7 +292,7 @@ function morphTo(mood, dur = 0.9) {
       tl,
       ["#leftEye", "#rightEye", "#leftEyeStar", "#rightEyeStar"],
       "start+=0.05",
-      0.2
+      0.2,
     );
     setAttr(tl, "#leftEyeOpen", mood.ellipses.leftEyeOpen, "start");
     setAttr(tl, "#rightEyeOpen", mood.ellipses.rightEyeOpen, "start");
@@ -315,7 +307,7 @@ function morphTo(mood, dur = 0.9) {
       $("#mood").textContent = mood.id;
     },
     null,
-    `start+=${(dur * 0.7).toFixed(2)}`
+    `start+=${(dur * 0.7).toFixed(2)}`,
   );
 
   return tl;
@@ -349,7 +341,6 @@ tl.add(morphTo(calm, 1.5))
 
 // buttons
 byId("stop-btn")?.addEventListener("click", () => tl.pause());
-byId("restart-btn")?.addEventListener("click", () => tl.resume());
 
 // reduce motion
 if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
