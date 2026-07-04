@@ -162,15 +162,6 @@ function morphPath(tl, target, d, at = 0, dur = 0.9) {
   return tl;
 }
 
-// Initialize once for a mood
-function setInitial(mood) {
-  ["leftEye", "rightEye", "mouth"].forEach((k) => {
-    if (mood.d[k]) document.getElementById(k).setAttribute("d", mood.d[k]);
-  });
-  gsap.set(CORE, { autoAlpha: 1 });
-  gsap.set(HIDABLE, { autoAlpha: 0 });
-}
-
 function morphTo(mood, dur = 0.9) {
   const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
   tl.addLabel("start", 0);
@@ -315,7 +306,7 @@ const worried = MOODS.find((m) => m.id === "worried");
 
 const tl = gsap.timeline({ repeat: -1 });
 
-// Calm -> Happy -> Excited -> Sleepy -> Sad -> Angry -> Calm
+// Calm -> Happy -> Excited -> Sleepy -> Sad -> Angry -> Worried -> Calm
 tl.add(morphTo(calm, 1.5))
   .to({}, { duration: 1.0 })
   .add(morphTo(happy, 1.5))
