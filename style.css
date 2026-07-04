@@ -51,6 +51,12 @@ p {
 
 p#mood {
   padding-top: 1rem;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+p#mood.is-hidden {
+  visibility: hidden;
 }
 
 #box svg {

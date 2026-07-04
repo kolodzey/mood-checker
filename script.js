@@ -111,6 +111,7 @@ const MOODS = [
 // -------- setup --------
 const $ = (s) => document.querySelector(s);
 const HAS_MORPH = !!(gsap.plugins && gsap.plugins.MorphSVGPlugin);
+const formatMoodLabel = (mood) => `You are ${mood.id}.`;
 
 // Core selectors you show most often
 const CORE = ["#leftEye", "#rightEye", "#mouth"];
@@ -168,7 +169,6 @@ function setInitial(mood) {
   });
   gsap.set(CORE, { autoAlpha: 1 });
   gsap.set(HIDABLE, { autoAlpha: 0 });
-  $("#mood").textContent = mood.id;
 }
 
 function morphTo(mood, dur = 0.9) {
@@ -178,7 +178,6 @@ function morphTo(mood, dur = 0.9) {
 
   tl.call(
     () => {
-      $("#mood").textContent = mood.id;
       window.currentMood = mood;
     },
     null,
@@ -303,15 +302,6 @@ function morphTo(mood, dur = 0.9) {
     hide(tl, ["#leftEyeOpen", "#rightEyeOpen"], "start", 0.22);
   }
 
-  // label text
-  tl.call(
-    () => {
-      $("#mood").textContent = mood.id;
-    },
-    null,
-    `start+=${labelAt.toFixed(2)}`,
-  );
-
   return tl;
 }
 
@@ -343,14 +333,19 @@ tl.add(morphTo(calm, 1.5))
 
 // buttons
 const moodButton = document.getElementById("stop-btn");
+const moodLabel = document.getElementById("mood");
 let isPausedByUser = false;
 
 moodButton?.addEventListener("click", () => {
   if (isPausedByUser) {
     tl.restart();
+    moodLabel.textContent = "";
+    moodLabel.classList.add("is-hidden");
     moodButton.textContent = "That's my mood!";
   } else {
     tl.pause();
+    moodLabel.textContent = formatMoodLabel(window.currentMood || calm);
+    moodLabel.classList.remove("is-hidden");
     moodButton.textContent = "One more time ...";
   }
 
